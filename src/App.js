@@ -3,9 +3,9 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 // Application-specific component imports
-import Header from './components/Header';
-import Main from './components/Main';
-import {Footer} from './components/Footer';
+import Header from './components/elements/Header';
+import Main from './components/elements/Main';
+import {Footer} from './components/elements/Footer';
 
 /**
  * App Component

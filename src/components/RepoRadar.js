@@ -10,6 +10,8 @@ import {
     Typography
 } from "@material-tailwind/react";
 import { fetchRepository, calculatePopularity, isPopular } from '../utils/fetchRepository';
+import { useRecentSearches } from './RecentSearchContext';
+
 
 /**
  * RepoRadar Component
@@ -42,6 +44,7 @@ function RepoRadar() {
                     const popular = isPopular(score);
                     setRepoData({ ...data, score, popular });  // Update state with fetched data and calculated values
                     setOpen(true);  // Open the accordion to display fetched data
+                    addSearch(repoName);  // Add to recent searches
                 } else {
                     console.error('Incomplete or malformed data received from API');
                 }
@@ -50,12 +53,13 @@ function RepoRadar() {
                 console.error('An error occurred:', error);
             });
     };
+    const { addSearch } = useRecentSearches();
 
     return (
 
         <div className="flex flex-col items-center">
             {/* Search Form encapsulated in a Card */}
-            <Card className="w-[32rem] mb-4 shadow-md">
+            <Card className="w-[32rem] mb-4  drop-shadow-xl mt-7 bg-transparent">
                 <CardBody>
                     <form onSubmit={handleSubmit}>
                         <Input
@@ -70,13 +74,13 @@ function RepoRadar() {
 
             {/* Repository Details displayed in an Accordion, if data is available */}
             {repoData && (
-                <Accordion open={open} className="p-6">
+                <Accordion open={open} className="p-6 ">
                     <AccordionHeader id="repo-result-header" className="justify-start gap-5">
                         {/* Avatar and Repository Details */}
                         <div className="flex items-center gap-4">
                             <Avatar src={repoData.owner.avatar_url} alt={`${repoData.owner.login}'s avatar`} size="sm" withBorder={true} color="blue" className="p-0.5" />
                             <div className="flex items-center gap-3">
-                                <Typography variant="h3">{repoData.name}</Typography>
+                                <Typography variant="h7" className="font-bold">{repoData.name}</Typography>
                                 <Typography variant="h7" color="gray" className="font-normal">
                                     by {repoData.owner.login}
                                 </Typography>
@@ -94,6 +98,9 @@ function RepoRadar() {
                 </Accordion>
             )}
             </Card>
+
+
+
         </div>
 
     );
