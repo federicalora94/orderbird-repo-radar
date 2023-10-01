@@ -59,9 +59,9 @@ export function StickyNavbar() {
         };
     }, []);
 
-    // Render the sticky navigation bar
+    // Render the navigation bar
     return (
-        <Navbar className="mx-auto max-w-full px-6 md:px-40 py-2 rounded-none">
+        <Navbar style={{ backdropFilter: 'none', WebkitBackdropFilter: 'none' }} className="mx-auto max-w-full px-6 md:px-40 py-2 sticky top-0 header-navigation">
             <div className="flex items-center justify-between text-blue-gray-900">
                 {/* Desktop view navigation list */}
                 <div className="hidden lg:block">
