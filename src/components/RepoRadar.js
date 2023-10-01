@@ -1,41 +1,106 @@
-import { useEffect } from 'react';
-import { fetchRepository, calculatePopularity, isPopular } from '../utils/fetchRepository';
+import React, {useState, useEffect} from 'react';
+import {
+    Input,
+    Card,
+    CardBody,
+    Accordion,
+    AccordionHeader,
+    AccordionBody,
+    Avatar,
+    Typography
+} from "@material-tailwind/react";
+import {fetchRepository, calculatePopularity, isPopular} from '../utils/fetchRepository';
+import {useRecentSearches} from '../utils/RecentSearchContext';
 
+
+/**
+ * RepoRadar Component
+ * This component allows the user to search for GitHub repositories,
+ * fetches their details, and displays them in a collapsible accordion.
+ */
 function RepoRadar() {
-    // Use the React useEffect hook to execute code when the component mounts
+    // State Variables
+    const [repoName, setRepoName] = useState('');  // For storing the repository name to search
+    const [repoData, setRepoData] = useState(null);  // For storing the fetched repository data
+    const [open, setOpen] = useState(false);  // For controlling the accordion open/close state
+
     useEffect(() => {
-        // Fetch repository data from GitHub
-        // Using the 'facebook/react' repository as an example
-        fetchRepository('facebook/react', process.env.REACT_APP_GITHUB_API_TOKEN)
+        setRepoData(null);
+        setOpen(false);
+    }, [repoName]);
+
+    /**
+     * Handles the form submission.
+     * Fetches the repository data and updates the state.
+     */
+    const handleSubmit = (e) => {
+        e.preventDefault();  // Prevent default form behavior
+
+        // Fetch Repository Data
+        fetchRepository(repoName, process.env.REACT_APP_GITHUB_API_TOKEN)
             .then(data => {
-                // Destructure the required properties from the API response
-                const { description, forks_count, name, owner, stargazers_count } = data;
-
-                // Further destructure the owner object to get the avatar URL and login (owner name)
-                const { avatar_url, login } = owner;
-
-                // Calculate the repository's popularity score
-                const score = calculatePopularity(stargazers_count, forks_count);
-
-                // Determine if the repository is popular based on its score
-                const popular = isPopular(score);
-
-                // Log the fetched and calculated data (for demonstration purposes)
-                console.log(`Description: ${description}, Forks: ${forks_count}, Name: ${name}, 
-                     Avatar URL: ${avatar_url}, Owner: ${login}, Stars: ${stargazers_count}, 
-                     Score: ${score}, Is Popular: ${popular}`);
+                if (data && data.owner) {
+                    const score = calculatePopularity(data.stargazers_count, data.forks_count);
+                    const popular = isPopular(score);
+                    setRepoData({...data, score, popular});  // Update state with fetched data and calculated values
+                    setOpen(true);  // Open the accordion to display fetched data
+                    addSearch(repoName);  // Add to recent searches
+                } else {
+                    console.error('Incomplete or malformed data received from API');
+                }
             })
             .catch(error => {
-                // Log any errors that occur during the fetch operation
                 console.error('An error occurred:', error);
             });
-    }, []); // Empty dependency array ensures this useEffect runs only once, similar to componentDidMount
+    };
+    const {addSearch} = useRecentSearches();
 
     return (
-        <div>
-            <h1>Repo Radar Page</h1>
-            <p>Here, you can search for GitHub repositories.</p>
+
+        <div className="flex flex-col items-center">
+            {/* Search Form encapsulated in a Card */}
+            <Card className="w-[32rem] mb-4  drop-shadow-xl mt-7 bg-transparent">
+                <CardBody>
+                    <form onSubmit={handleSubmit}>
+                        <Input
+                            type="text"
+                            label="Repository Name"
+                            value={repoName}
+                            onChange={(e) => setRepoName(e.target.value)}
+                        />
+                    </form>
+                </CardBody>
+
+
+                {/* Repository Details displayed in an Accordion, if data is available */}
+                {repoData && (
+                    <Accordion open={open} className="p-6 ">
+                        <AccordionHeader id="repo-result-header" className="justify-start gap-5">
+                            {/* Avatar and Repository Details */}
+                            <div className="flex items-center gap-4">
+                                <Avatar src={repoData.owner.avatar_url} alt={`${repoData.owner.login}'s avatar`}
+                                        size="sm" withBorder={true} color="blue" className="p-0.5"/>
+                                <div className="flex items-center gap-3">
+                                    <Typography variant="h7" className="font-bold">{repoData.name}</Typography>
+                                    <Typography variant="h7" color="gray" className="font-normal">
+                                        by {repoData.owner.login}
+                                    </Typography>
+                                </div>
+                            </div>
+                        </AccordionHeader>
+                        <AccordionBody>
+                            {/* Additional Repository Details */}
+                            <p>{repoData.description}</p>
+                            <p>Stars: {repoData.stargazers_count}</p>
+                            <p>Forks: {repoData.forks_count}</p>
+                            <p>Score: {repoData.score}</p>
+                            <p>Is Popular: {repoData.popular ? 'Yes' : 'No'}</p>
+                        </AccordionBody>
+                    </Accordion>
+                )}
+            </Card>
         </div>
+
     );
 }
 
