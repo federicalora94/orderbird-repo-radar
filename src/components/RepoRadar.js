@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Input,
     Card,
@@ -9,8 +9,8 @@ import {
     Avatar,
     Typography
 } from "@material-tailwind/react";
-import { fetchRepository, calculatePopularity, isPopular } from '../utils/fetchRepository';
-import { useRecentSearches } from './RecentSearchContext';
+import {fetchRepository, calculatePopularity, isPopular} from '../utils/fetchRepository';
+import {useRecentSearches} from '../utils/RecentSearchContext';
 
 
 /**
@@ -42,7 +42,7 @@ function RepoRadar() {
                 if (data && data.owner) {
                     const score = calculatePopularity(data.stargazers_count, data.forks_count);
                     const popular = isPopular(score);
-                    setRepoData({ ...data, score, popular });  // Update state with fetched data and calculated values
+                    setRepoData({...data, score, popular});  // Update state with fetched data and calculated values
                     setOpen(true);  // Open the accordion to display fetched data
                     addSearch(repoName);  // Add to recent searches
                 } else {
@@ -53,7 +53,7 @@ function RepoRadar() {
                 console.error('An error occurred:', error);
             });
     };
-    const { addSearch } = useRecentSearches();
+    const {addSearch} = useRecentSearches();
 
     return (
 
@@ -72,35 +72,33 @@ function RepoRadar() {
                 </CardBody>
 
 
-            {/* Repository Details displayed in an Accordion, if data is available */}
-            {repoData && (
-                <Accordion open={open} className="p-6 ">
-                    <AccordionHeader id="repo-result-header" className="justify-start gap-5">
-                        {/* Avatar and Repository Details */}
-                        <div className="flex items-center gap-4">
-                            <Avatar src={repoData.owner.avatar_url} alt={`${repoData.owner.login}'s avatar`} size="sm" withBorder={true} color="blue" className="p-0.5" />
-                            <div className="flex items-center gap-3">
-                                <Typography variant="h7" className="font-bold">{repoData.name}</Typography>
-                                <Typography variant="h7" color="gray" className="font-normal">
-                                    by {repoData.owner.login}
-                                </Typography>
+                {/* Repository Details displayed in an Accordion, if data is available */}
+                {repoData && (
+                    <Accordion open={open} className="p-6 ">
+                        <AccordionHeader id="repo-result-header" className="justify-start gap-5">
+                            {/* Avatar and Repository Details */}
+                            <div className="flex items-center gap-4">
+                                <Avatar src={repoData.owner.avatar_url} alt={`${repoData.owner.login}'s avatar`}
+                                        size="sm" withBorder={true} color="blue" className="p-0.5"/>
+                                <div className="flex items-center gap-3">
+                                    <Typography variant="h7" className="font-bold">{repoData.name}</Typography>
+                                    <Typography variant="h7" color="gray" className="font-normal">
+                                        by {repoData.owner.login}
+                                    </Typography>
+                                </div>
                             </div>
-                        </div>
-                    </AccordionHeader>
-                    <AccordionBody>
-                        {/* Additional Repository Details */}
-                        <p>{repoData.description}</p>
-                        <p>Stars: {repoData.stargazers_count}</p>
-                        <p>Forks: {repoData.forks_count}</p>
-                        <p>Score: {repoData.score}</p>
-                        <p>Is Popular: {repoData.popular ? 'Yes' : 'No'}</p>
-                    </AccordionBody>
-                </Accordion>
-            )}
+                        </AccordionHeader>
+                        <AccordionBody>
+                            {/* Additional Repository Details */}
+                            <p>{repoData.description}</p>
+                            <p>Stars: {repoData.stargazers_count}</p>
+                            <p>Forks: {repoData.forks_count}</p>
+                            <p>Score: {repoData.score}</p>
+                            <p>Is Popular: {repoData.popular ? 'Yes' : 'No'}</p>
+                        </AccordionBody>
+                    </Accordion>
+                )}
             </Card>
-
-
-
         </div>
 
     );
