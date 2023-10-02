@@ -19,6 +19,24 @@ import {StarIcon, HeartIcon, ShareIcon, TrophyIcon} from '@heroicons/react/24/so
 import {fetchRepository, calculatePopularity, isPopular} from '../utils/fetchRepository';
 import {useRecentSearches} from '../utils/RecentSearchContext';
 
+function Icon() {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-6 w-6"
+        >
+            <path
+                fillRule="evenodd"
+                d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                clipRule="evenodd"
+            />
+        </svg>
+    );
+}
+
+
 /**
  * RepoRadar Component
  * This component serves two main functionalities:
@@ -82,7 +100,7 @@ function RepoRadar() {
     // Render
     return (
         <div className="flex flex-col items-center">
-            <Card className="w-[32rem] mb-4 drop-shadow-none shadow-none mt-7 bg-transparent">
+            <Card className="w-full lg:w-[32rem] mb-4 drop-shadow-none shadow-none mt-7 bg-transparent">
                 <CardBody>
                     <form onSubmit={handleSubmit}>
                         <Input
@@ -96,6 +114,13 @@ function RepoRadar() {
                             onFocus={() => setErrorMessage('')}  // Clear the error message when the input is focused
                         />
                     </form>
+                    {/* Render Alert for error messages */}
+                    {errorMessage && !showAlert && <small className="text-red-500">{errorMessage}</small>}
+                    {showAlert && errorMessage && (
+                        <Alert className="mt-5 py-2 pr-0 text-sm sm:text-md" icon={<Icon/>}>
+                            {errorMessage}
+                        </Alert>
+                    )}
                     {/* Render repository details in an accordion if data is available */}
                     {repoData && (
                         <Accordion open={open} className="p-6">

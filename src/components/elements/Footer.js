@@ -1,51 +1,31 @@
 import { Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+
+const footerLinks = [
+    { label: 'About', path: '/ ' },
+    { label: 'License', path: '/ ' },
+    { label: 'Contribute', path: '/ ' },
+    { label: 'Contact', path: '/ ' },
+];
+
 export function Footer() {
     return (
-        <footer className="flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center md:justify-between px-6 md:px-40">
-            <Typography color="blue-gray" className="font-normal">
-                &copy; 2023 Fede´s Tech challenge
-            </Typography>
-            <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
-                <li>
-                    <Typography
-                        as="a"
-                        href="#"
-                        color="blue-gray"
-                        className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-                    >
-                        About Us
-                    </Typography>
-                </li>
-                <li>
-                    <Typography
-                        as="a"
-                        href="#"
-                        color="blue-gray"
-                        className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-                    >
-                        License
-                    </Typography>
-                </li>
-                <li>
-                    <Typography
-                        as="a"
-                        href="#"
-                        color="blue-gray"
-                        className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-                    >
-                        Contribute
-                    </Typography>
-                </li>
-                <li>
-                    <Typography
-                        as="a"
-                        href="#"
-                        color="blue-gray"
-                        className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-                    >
-                        Contact Us
-                    </Typography>
-                </li>
+        <footer className="flex   items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center lg:justify-start px-0 md:px-10">
+
+            <ul className="flex items-center gap-y-2 gap-x-4 flex-nowrap">
+                {footerLinks.map((link, index) => (
+                    <li key={index}>
+                        <Typography
+                            as={Link}
+                            to={link.path}
+                            variant="small"
+                            color="blue-gray"
+                            className="p-1 font-medium transition-colors hover:text-blue-500 focus:text-blue-500"
+                        >
+                            {link.label}
+                        </Typography>
+                    </li>
+                ))}
             </ul>
         </footer>
     );

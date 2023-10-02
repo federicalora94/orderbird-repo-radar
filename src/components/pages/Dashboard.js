@@ -7,11 +7,11 @@ import { RecentSearchProvider } from '../../utils/RecentSearchContext';
 function Dashboard() {
     return (
         <RecentSearchProvider>
-            <div className="flex gap-5" id="dashboard-wrapper">
+            <div className="flex lg:gap-5 gap-0 lg:flex-row flex-col" id="dashboard-wrapper">
                 <SidePanel />
                 <div className="flex flex-col gap-1">
                     <RepoRadar />
-                    <RecentSearches />
+                    {/*<RecentSearches />*/}
                 </div>
             </div>
         </RecentSearchProvider>

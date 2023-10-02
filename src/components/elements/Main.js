@@ -14,7 +14,7 @@ import RoutesComponent from '../Routes';
 function Main() {
     return (
         // Defining the main content area
-        <main className="main-content p-4 flex flex-col items-center justify-center">
+        <main className="main-content p-4 pt-0 flex flex-col items-center justify-center">
             {/*
               RoutesComponent takes care of the application routing.
               It renders the component based on the current route.
