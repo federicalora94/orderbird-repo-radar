@@ -5,10 +5,9 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Importing specific application views/components
-import GetStarted from './pages/GetStarted';
+import GetStarted from '../pages/GetStarted';
 import RepoRadar from './RepoRadar';
-import FAQ from './pages/FAQ';
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "../pages/Dashboard";
 
 /**
  * RoutesComponent Function
@@ -29,8 +28,6 @@ function RoutesComponent() {
             {/* Repo Radar Route: Handles the /repo-radar URL path */}
             <Route path="/repo-radar" element={<Dashboard />} />
 
-            {/* FAQ Route: Handles the /faq URL path */}
-            <Route path="/faq" element={<FAQ />} />
         </Routes>
     );
 }
