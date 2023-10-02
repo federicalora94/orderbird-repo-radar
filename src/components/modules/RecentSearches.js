@@ -15,7 +15,7 @@ function RecentSearches() {
         // Container div to hold the Card component
         <div className="w-full">
             {/* Card component with custom width, margin and shadow*/}
-            <Card className="w-[32rem] mb-4 shadow-md bg-transparent">
+            <Card className="w-full lg:w-[32rem] mb-4 drop-shadow-none shadow-none mt-7 bg-transparent">
 
                 {/* CardBody component to hold the inner content*/}
                 <CardBody>
