@@ -9,7 +9,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    height: 100vh;
+    height: fit-content;
     background-image: url("./assets/images/grain-texture.jpg"), linear-gradient(13deg, rgba(173, 201, 226, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
     background-blend-mode: multiply;
     background-repeat: repeat, no-repeat;
@@ -41,5 +41,11 @@ code {
   background-color: rgba(255, 255, 255, 0.08);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    padding-right: 30px;
+
+    width: 90vw;
+    max-width: 1280px;
+}
+
+.App{
+height: fit-content;
 }
