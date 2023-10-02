@@ -22,9 +22,7 @@ function NavList() {
             <Typography as="li" variant="small" color="blue-gray" className="p-1 font-medium">
                 <Link to="/repo-radar" className="flex items-center hover:text-blue-500 transition-colors">Repo-radar</Link>
             </Typography>
-            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-medium">
-                <Link to="/faq" className="flex items-center hover:text-blue-500 transition-colors">FAQ</Link>
-            </Typography>
+
         </ul>
     );
 }

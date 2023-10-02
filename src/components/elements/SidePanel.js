@@ -37,12 +37,6 @@ function SidePanel() {
                         </ListItem>
                         <ListItem>
                             <ListItemPrefix>
-                                <ShoppingBagIcon className="h-5 w-5"/>
-                            </ListItemPrefix>
-                            <span className="hidden sm:inline">Recent Searches</span>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemPrefix>
                                 <InboxIcon className="h-5 w-5"/>
                             </ListItemPrefix>
                             <span className="hidden sm:inline">Inbox</span>
@@ -76,7 +70,6 @@ function SidePanel() {
             <div
                 className="lg:hidden flex justify-center items-center bg-transparent pt-5 px-10 gap-4 text-blue-gray">
                 <PresentationChartBarIcon className="h-5 w-5" fill='#3c5058'/>
-                <ShoppingBagIcon className="h-5 w-5" fill='#3c5058'/>
                 <InboxIcon className="h-5 w-5" fill='#3c5058'/>
                 <UserCircleIcon className="h-5 w-5" fill='#3c5058'/>
                 <Cog6ToothIcon className="h-5 w-5" fill='#3c5058'/>

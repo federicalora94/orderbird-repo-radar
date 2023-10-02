@@ -1,17 +1,19 @@
+// Importing required components and context provider
 import React from 'react';
-import RepoRadar from '../RepoRadar';
-import SidePanel from '../SidePanel';
-import RecentSearches from '../RecentSearches';
-import { RecentSearchProvider } from '../../utils/RecentSearchContext';
+import RepoRadar from '../modules/RepoRadar';
+import SidePanel from '../elements/SidePanel';
+import RecentSearches from '../modules/RecentSearches';
+import {RecentSearchProvider} from '../../utils/RecentSearchContext';
 
+// Dashboard Functional Component
 function Dashboard() {
     return (
         <RecentSearchProvider>
             <div className="flex lg:gap-5 gap-0 lg:flex-row flex-col" id="dashboard-wrapper">
-                <SidePanel />
+                <SidePanel/>
                 <div className="flex flex-col gap-1">
-                    <RepoRadar />
-                    {/*<RecentSearches />*/}
+                    <RepoRadar/>
+                    <RecentSearches/>
                 </div>
             </div>
         </RecentSearchProvider>

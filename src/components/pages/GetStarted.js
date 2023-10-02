@@ -39,15 +39,15 @@ function GetStarted() {
                     {/* Subtitle */}
                     <h2 className="text-base font-semibold leading-3 text-main-theme uppercase">try now our new</h2>
                     {/* Main Title */}
-                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Repo-radar</h1>
+                    <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">Repo-radar</h1>
                     {/* Description Text */}
-                    <p className="mt-6 mb-6 text-lg leading-8 text-gray-600">
+                    <p className="py-5 md:py-6 lg:py-7 text-base md:text-lg leading-6 md:leading-7 text-gray-600">
                         Why guess when you can know? Our popularity indicator tells you straight up whether a repository
                         is the talk of the dev community or just another codebase. Make smarter decisions with real-time
                         popularity metrics.
                     </p>
                     {/* Button linking to the repo search, shown on medium screens and up */}
-                    <div className="hidden sm:mb-2 sm:flex sm:justify-center">
+                    <div className=" sm:mb-2 sm:flex sm:justify-center">
                         <div
                             className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                             <Link to="/repo-radar" className="font-semibold text-main-theme">
