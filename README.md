@@ -1,70 +1,113 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# orderbird-repo-radar
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [Environment Setup](#environment-setup)
+- [Routing](#routing)
+- [UI Prototyping](#ui-prototyping)
+- [Data Fetching](#data-fetching)
+- [Displaying Repository Data](#displaying-repository-data)
+- [Error Handling and Input Validation](#error-handling-and-input-validation)
+- [Responsiveness](#responsiveness)
+- [Testing](#testing)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Introduction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project is a Single Page Application (SPA) built with React, Tailwind CSS, and CSS. It interacts with GitHub's REST API to fetch and display details about GitHub repositories.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Environment Setup
 
-### `npm run build`
+### Initial React Setup
+- The project was bootstrapped with Create React App.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Adding Dependencies
+- Installed Tailwind CSS and Material Tailwind for styling.
+- Configured Tailwind via `tailwind.config.js`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Routing
 
-### `npm run eject`
+### Installing React Router
+- `react-router-dom` was installed to manage routing.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Route Configuration
+- Set up basic route structure to handle different views like `GetStarted`, `RepoRadar`, and `FAQ`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## UI Prototyping
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Theme and Styling
+- Defined main theme colors and applied a gradient background.
+- Made the header sticky for better UX.
 
-## Learn More
+### Component Skeleton
+- Created foundational components like `Header`, `Main`, and `Footer`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Data Fetching
 
-### Code Splitting
+### GitHub API Integration
+- Utilized `useEffect` to initiate data fetch from GitHub on component mount.
+- Extracted required details about repositories and their owners.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Displaying Repository Data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### UI Components
+- Added Cards, Accordions, and Avatars to display fetched data.
 
-### Making a Progressive Web App
+### State Management
+- Implemented Recent Searches feature using context to store the state.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Error Handling and Input Validation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Enhanced error validation in the `RepoRadar` component.
+- Added user feedback mechanisms for better UX.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Responsiveness
 
-### `npm run build` fails to minify
+- Made several components like Side Panel and Dashboard layout responsive.
+- Adjusted font and icon sizes for different screen sizes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Testing
+
+### Jest Setup
+- Installed required packages and created configuration files for Jest.
+
+### Unit Tests
+- Wrote tests for API fetch functionality, score calculation, and the RecentSearchContext.
+
+---
+
+## Developer's Thoughts
+
+### Points Left Behind
+I'm aware that one of the initial requirements, the use of SCSS, was not met. Due to time constraints, I focused on delivering the core functionalities. However, I want to note that I'm proficient in SCSS, perhaps even more so than in Tailwind.
+
+### Project Approach
+My approach to this project was to give it the feeling of "selling" a product. This aligns with what could potentially be a future task at orderbird. The UI was designed to be engaging and intuitive, aiming to provide the user with valuable insights into GitHub repositories.
+
+### Future Improvements
+With more time, I would focus on the following:
+- Writing more comprehensive unit tests to cover edge cases and improve code reliability.
+- Refining the UI by adding more personalization through SCSS.
+- Expanding the dashboard by adding more elements that can provide deeper insights into repositories.
+
+---
+
+Feel free to reach out if you need more details or further clarifications.
