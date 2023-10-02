@@ -16,8 +16,8 @@ import {
     Alert
 } from '@material-tailwind/react';
 import {StarIcon, HeartIcon, ShareIcon, TrophyIcon} from '@heroicons/react/24/solid';
-import {fetchRepository, calculatePopularity, isPopular} from '../utils/fetchRepository';
-import {useRecentSearches} from '../utils/RecentSearchContext';
+import {fetchRepository, calculatePopularity, isPopular} from '../../utils/fetchRepository';
+import {useRecentSearches} from '../../utils/RecentSearchContext';
 
 function Icon() {
     return (

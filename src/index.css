@@ -12,7 +12,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
-    max-height: 200vh;
     /* Set background with a grain texture and gradient */
     background-image: url("./assets/images/grain-texture.jpg"), linear-gradient(13deg, rgba(173, 201, 226, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
     background-blend-mode: multiply;

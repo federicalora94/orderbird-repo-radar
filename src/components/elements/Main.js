@@ -1,6 +1,6 @@
 // Importing essential modules and components
 import React from 'react';
-import RoutesComponent from '../Routes';
+import RoutesComponent from '../modules/Routes';
 
 /**
  * Main Function Component
